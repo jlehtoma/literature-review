@@ -10,6 +10,4 @@ Joona Lehtomäki^1,2^
 **Manuscript statistics:**  
 Abstract length = xxx 
 Main text length = xxx  
-Figures = xxx  
-Tables = xxx  
 References = xxx  
