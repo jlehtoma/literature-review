@@ -6,16 +6,15 @@ from git import Repo
 
 BUILD_DIR = "pandoc/build/"
 
-ABSTRACT = "validity_ms_abstract.md"
+ABSTRACT = "litreview_abstract.md"
 FIGURES = "validity_ms_figures.md"
-FRONT_MATTER = "validity_ms_front_matter.md"
+FRONT_MATTER = "litreview_front_matter.md"
 FRONT_MATTER_BUILD = os.path.join(BUILD_DIR,
-                                  "validity_ms_front_matter_prep.md")
-MAIN_FILE = "validity_ms.md"
-MAIN_FILE_BUILD = os.path.join(BUILD_DIR, "validity_ms_prep.md")
-TABLES = "validity_ms_tables.md"
+                                  "litreview_front_matter_prep.md")
+MAIN_FILE = "litreview.md"
+MAIN_FILE_BUILD = os.path.join(BUILD_DIR, "litreview_prep.md")
 
-GH_ISSUE_URL = "https://github.com/jlehtoma/validityms/issues/"
+GH_ISSUE_URL = "https://github.com/jlehtoma/literature-review/issues/"
 
 repo = Repo(".")
 current_tag = repo.tags[-1].name

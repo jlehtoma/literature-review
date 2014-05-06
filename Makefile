@@ -1,3 +1,5 @@
+#!/bin/bash
+
 TITLE = ...
 AUTHOR = Joona Lehtomäki
 GITHUB = https://github.com/jlehtoma/literature-review
@@ -83,6 +85,7 @@ pdf: latex
 latex: preprocess bibtex
 
 	@echo $(info Copying image files to build dir...)	
+
 	@cp -r figs $(BUILDDIR)
 
 	@echo $(info Converting individual files to latex...)
@@ -90,9 +93,6 @@ latex: preprocess bibtex
 	-o $(BUILDDIR)/$(FILENAME)_front_matter.tex --latex-engine=xelatex
 	@$(PANDOC) $(FILENAME)_abstract.md -o $(BUILDDIR)/$(FILENAME)_abstract.tex \
 	--latex-engine=xelatex
-	@$(PANDOC) $(FILENAME)_tables.md -t latex -o $(BUILDDIR)/$(FILENAME)_tables.tex 
-	@$(PANDOC) $(FILENAME)_figures.md -o $(BUILDDIR)/$(FILENAME)_figures.tex --latex-engine=xelatex
-	@$(PANDOC) $(FILENAME)_suppl.md -o $(BUILDDIR)/$(FILENAME)_suppl.tex --latex-engine=xelatex
 	@$(PANDOC) glossary.md -o $(BUILDDIR)/$(FILENAME)_glossary.tex --latex-engine=xelatex
 
 	@echo $(info Compiling final latex...)
@@ -102,9 +102,6 @@ latex: preprocess bibtex
 	--latex-engine=xelatex \
 	--include-before-body=$(BUILDDIR)/$(FILENAME)_front_matter.tex \
 	--include-before-body=$(BUILDDIR)/$(FILENAME)_abstract.tex \
-	--include-after-body=$(BUILDDIR)/$(FILENAME)_tables.tex \
-	--include-after-body=$(BUILDDIR)/$(FILENAME)_figures.tex \
-	--include-after-body=$(BUILDDIR)/$(FILENAME)_suppl.tex \
 	--include-after-body=$(BUILDDIR)/$(FILENAME)_glossary.tex
 
 odt: latex
